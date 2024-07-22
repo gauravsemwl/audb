@@ -1,5 +1,5 @@
 
-import { Row, Col, Container, Form, DropdownButton, Dropdown } from 'react-bootstrap'
+import { Row, Col, Container, Form, DropdownButton, Dropdown, InputGroup, Button } from 'react-bootstrap'
 import Product from '../components/Product'
 import { useEffect, useState, useMemo } from 'react'
 import axios from 'axios'
@@ -13,7 +13,8 @@ const Home = () => {
 
     const [selectedGenres, setSelectedGenres] = useState([])
     const [sortOrder, setSortOrder] = useState('');
-
+    const [searchTerm, setSearchTerm] = useState('')
+    const [searchTrigger, setSearchTrigger] = useState('')
 
     const { data: audiobooks, isLoading, error } = useGetAudiobooksQuery()
 
@@ -50,6 +51,9 @@ const Home = () => {
             .filter((audiobook) =>
                 selectedGenres.length > 0 ? selectedGenres.includes(audiobook.genre) : true
             )
+            .filter((audiobook) =>
+                audiobook.name.toLowerCase().includes(searchTerm.toLowerCase())
+            )
             .sort((a, b) => {
                 if (sortOrder === 'lotohi') {
                     return a.rating - b.rating;
@@ -59,11 +63,24 @@ const Home = () => {
                     return 0;
                 }
             });
-    }, [audiobooks, selectedGenres, sortOrder]);
+    }, [audiobooks, selectedGenres, sortOrder, searchTerm]);
 
     return (
         <>
+
             <Row className="my-3 justify-content-end">
+                <InputGroup className="mb-3" style={{ width: '300px' }}>
+                    <Button variant="primary" >
+                        Search
+                    </Button>
+                    <Form.Control
+                        type="text"
+                        placeholder="Search audiobooks..."
+                        value={searchTerm}
+                        onChange={(e) => setSearchTerm(e.target.value)}
+                    />
+
+                </InputGroup>
                 <Col xs='auto' className='px-1'>
                     <DropdownButton id="dropdown-basic-button" title="Sort by Rating">
                         <Dropdown.Item
