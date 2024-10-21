@@ -1,11 +1,9 @@
 import { useParams } from "react-router-dom";
-// import audiobooks from "../audiobooks";
 import { Link } from "react-router-dom";
-import { Row, Col, Image, Card, Button, ListGroup, ListGroupItem, FormGroup, Form } from 'react-bootstrap'
+import { Row, Col, Image, Button, ListGroup, Form } from 'react-bootstrap'
 import Rating from "../components/Rating";
-import axios from 'axios'
-import { useEffect, useState } from "react";
-import { useDispatch, useSelector } from "react-redux";
+import { useState } from "react";
+import { useSelector } from "react-redux";
 import { toast } from "react-toastify";
 import Loader from "../components/Loader";
 import Message from "../components/Message";

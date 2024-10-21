@@ -2,7 +2,6 @@
 import { Card } from 'react-bootstrap'
 import { Link } from 'react-router-dom'
 import Rating from './Rating'
-import Loader from './Loader'
 
 const Product = ({ audiobook }) => {
 

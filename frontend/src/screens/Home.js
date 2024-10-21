@@ -1,8 +1,7 @@
 
-import { Row, Col, Container, Form, DropdownButton, Dropdown, InputGroup, Button } from 'react-bootstrap'
+import { Row, Col, Form, DropdownButton, Dropdown, InputGroup, Button } from 'react-bootstrap'
 import Product from '../components/Product'
-import { useEffect, useState, useMemo } from 'react'
-import axios from 'axios'
+import { useState, useMemo } from 'react'
 import Loader from '../components/Loader'
 import Message from '../components/Message'
 import { useGetAudiobooksQuery } from '../slices/audiobooksApiSlice'
@@ -14,7 +13,6 @@ const Home = () => {
     const [selectedGenres, setSelectedGenres] = useState([])
     const [sortOrder, setSortOrder] = useState('');
     const [searchTerm, setSearchTerm] = useState('')
-    const [searchTrigger, setSearchTrigger] = useState('')
 
     const { data: audiobooks, isLoading, error } = useGetAudiobooksQuery()
 

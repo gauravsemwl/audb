@@ -1,6 +1,6 @@
 import { useNavigate } from 'react-router-dom';
-import { Navbar, Nav, Container, NavItem } from 'react-bootstrap';
-import { FaUser, FaShoppingCart } from 'react-icons/fa'
+import { Navbar, Nav, Container } from 'react-bootstrap';
+import { FaUser } from 'react-icons/fa'
 import { LinkContainer } from 'react-router-bootstrap'
 import { useLogoutMutation } from '../slices/usersApiSlice';
 import { logout } from '../slices/authSlice';
